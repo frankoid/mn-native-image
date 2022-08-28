@@ -1,0 +1,7 @@
+micronaut:
+  application:
+    name: nativeimage
+netty:
+  default:
+    allocator:
+      max-order: 3
