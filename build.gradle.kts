@@ -14,6 +14,7 @@ plugins {
 
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.5.1"
+    id("io.micronaut.aot") version "3.5.1"
 }
 
 version = "0.1"
@@ -67,5 +68,16 @@ micronaut {
     processing {
         incremental(true)
         annotations("org.devrx.micronaut.example.*")
+    }
+
+    aot {
+        // optimizations configuration
+        optimizeServiceLoading.set(true)
+        convertYamlToJava.set(true)
+        precomputeOperations.set(true)
+        cacheEnvironment.set(true)
+        netty {
+            enabled.set(true)
+        }
     }
 }
