@@ -1,3 +1,12 @@
+// Workaround for dockerBuildNative failure on darwin/arm64 - can be removed when https://github.com/micronaut-projects/micronaut-gradle-plugin/issues/363 is fixed
+// source: https://github.com/bmuschko/gradle-docker-plugin/issues/1035#issuecomment-1217459991
+buildscript {
+    dependencies {
+        classpath("com.github.docker-java:docker-java:3.2.13")
+        classpath("com.github.docker-java:docker-java-transport-httpclient5:3.2.13")
+    }
+}
+
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.6.21"
     id("org.jetbrains.kotlin.kapt") version "1.6.21"
@@ -59,6 +68,3 @@ micronaut {
         annotations("org.devrx.micronaut.example.*")
     }
 }
-
-
-
